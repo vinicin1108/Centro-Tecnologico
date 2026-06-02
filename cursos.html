@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos - Centro Tecnológico Eduvale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div id="readingProgress" class="reading-progress"></div>
+  <header class="topbar" id="topbar">
+    <div class="container header-inner">
+      <nav class="main-nav" aria-label="Menu principal">
+        <a href="index.html">Home</a>
+        <a href="institucional.html">Institucional</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="docentes.html">Docentes</a>
+        <a href="inclusao.html">Inclusão Digital</a>
+        <a href="seguranca.html">Segurança</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+      <div class="header-actions">
+        <button id="darkModeBtn" class="toggle-switch" aria-label="Alternar tema"><span></span></button>
+        <a href="contato.html" class="btn btn-signup">Inscreva-se</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="section section-courses container">
+      <div class="section-heading">
+        <span class="section-label">Cursos</span>
+        <h2>Análise e Desenvolvimento de Sistemas</h2>
+        <p class="subtitle">Curso técnico completo com grade curricular atualizada e foco em mercado.</p>
+      </div>
+      <div class="course-filter">
+        <button class="filter-tab active" data-filter="all">Todos</button>
+        <button class="filter-tab" data-filter="ads">ADS</button>
+        <button class="filter-tab" data-filter="infra">Infraestrutura</button>
+        <button class="filter-tab" data-filter="gestao">Gestão</button>
+      </div>
+      <div class="course-grid" id="courseGrid">
+        <article class="course-card" data-category="ads">
+          <h3>Análise e Desenvolvimento de Sistemas</h3>
+          <span class="course-badge">1800h</span>
+          <p>Formação em software, banco de dados, web, mobile e projetos práticos.</p>
+        </article>
+        <article class="course-card" data-category="infra">
+          <h3>Infraestrutura de TI</h3>
+          <span class="course-badge">1020h</span>
+          <p>Redes, servidores, segurança e suporte com enfoque prático.</p>
+        </article>
+        <article class="course-card" data-category="gestao">
+          <h3>Gestão em Tecnologia</h3>
+          <span class="course-badge">960h</span>
+          <p>Processos, projetos e empreendedorismo para atuar em TI.</p>
+        </article>
+      </div>
+      <div class="grade-block">
+        <div class="section-heading">
+          <span class="section-label">Grade Curricular</span>
+          <h2>Estrutura do curso ADS</h2>
+        </div>
+        <div class="grade-grid">
+          <article class="grade-card glass-card">
+            <h3>1º Período</h3>
+            <ul>
+              <li>Programação I — 80h</li>
+              <li>Banco de Dados I — 60h</li>
+              <li>Redes de Computadores — 60h</li>
+            </ul>
+          </article>
+          <article class="grade-card glass-card">
+            <h3>2º Período</h3>
+            <ul>
+              <li>Programação II — 80h</li>
+              <li>Engenharia de Software — 70h</li>
+              <li>Web Design — 50h</li>
+            </ul>
+          </article>
+          <article class="grade-card glass-card">
+            <h3>3º Período</h3>
+            <ul>
+              <li>Desenvolvimento Web — 90h</li>
+              <li>Sistemas Distribuídos — 60h</li>
+              <li>Segurança da Informação — 60h</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>Centro Tecnológico Eduvale • Faculdade Eduvale Avaré</p>
+    <p>© 2026 • Projeto de ADS</p>
+  </footer>
+</body>
+</html>
