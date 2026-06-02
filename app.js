@@ -2,7 +2,7 @@ const burgerBtn = document.getElementById('burgerBtn');
 const sidebar = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebarOverlay');
 const introScreen = document.getElementById('introScreen');
-const darkModeBtn = document.getElementById('darkModeBtn');
+// const darkModeBtn = document.getElementById('darkModeBtn');
 const courseGrid = document.getElementById('courseGrid');
 const filterTabs = document.querySelectorAll('.filter-tab');
 const contactForm = document.getElementById('contact-form');
@@ -162,11 +162,12 @@ if (introScreen) {
   window.hideIntro = hideIntro;
 }
 
-if (darkModeBtn) {
+// dark mode removido (botão ocultado no header)
+/* if (darkModeBtn) {
   darkModeBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
   });
-}
+} */
 
 handleHash();
 
