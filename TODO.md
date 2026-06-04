@@ -1,7 +1,5 @@
-# TODO
-
-- [x] Atualizar blocos de navegação e links (#contato, #home) em todos os HTMLs listados
-- [x] Ajustar `initAnchorScroll()` no `app.js` para não interceptar links que terminam em `.html`
-- [ ] Testar manualmente as páginas no navegador (menu, Contato, logo)
-- [ ] Commitar e subir para o GitHub
-
+- [x] Atualizar Centro Tecnologico/index.html
+  - [x] Remover do <main class="main-content"> todas as seções: institucional, servicos, cursos, projetos, agenda, docentes, inclusao, seguranca, contato
+  - [x] Deixar apenas duas seções no <main>: hero (id="home") e highlights (3 cards)
+  - [x] Garantir que a estrutura HTML permaneça válida e que o footer continue intacto
+  - [x] Rodar uma checagem básica (verificação de ids dentro do <main>)
