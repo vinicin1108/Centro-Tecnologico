@@ -341,6 +341,13 @@ textarea {
   pointer-events: none;
 }
 
+/* Em páginas internas, o introScreen deve ficar oculto (para não “tapar” o conteúdo). */
+main:not(#home) #introScreen,
+main:not([id="home"]) #introScreen {
+  display: none;
+}
+
+
 .intro-content {
   max-width: 640px;
   text-align: center;
