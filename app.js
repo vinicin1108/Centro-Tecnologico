@@ -176,11 +176,23 @@ updateReadingProgress();
 
 
 function initAnchorScroll() {
+  // Somente aplica comportamento customizado quando estamos no index (modo de navegação por seções).
+  if (!isIndexPage) return;
+
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    // Não trate links cujo destino não está na página atual
+    // (ex.: href="#alguma-coisa" que não exista) ou links vazios.
+    const href = link.getAttribute('href') || '';
+    if (!href || href === '#') return;
+
+    // Exclui links que apontem explicitamente para outra página.
+    if (href.endsWith('.html')) return;
+
     link.addEventListener('click', (event) => {
-      const targetId = link.getAttribute('href').substring(1);
+      const targetId = href.substring(1);
       const targetSection = document.getElementById(targetId);
       if (!targetSection) return;
+
       event.preventDefault();
       hideSidebar();
       window.location.hash = targetId;

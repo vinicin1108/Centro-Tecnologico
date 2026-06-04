@@ -1,10 +1,7 @@
-# TODO (Centro-Tecnologico)
+# TODO
 
-- [x] Ajustar CSS do topo (`.hero-section`) para a fachada ficar com transparência/overlay parecidos com a referência.
-- [x] Garantir visibilidade da logo no cabeçalho (`.home-link img`): remover filtros/opacity e ajustar z-index se necessário.
-- [ ] Validar visualmente no navegador (logo visível e fachada “meio transparente”).
-- [ ] Validar seção Institucional com o texto novo (Histórico/Missão/Objetivos) no `index.html`.
-
-
-
+- [ ] Atualizar blocos de navegação e links (#contato, #home) em todos os HTMLs listados
+- [x] Ajustar `initAnchorScroll()` no `app.js` para não interceptar links que terminam em `.html`
+- [ ] Testar manualmente as páginas no navegador (menu, Contato, logo)
+- [ ] Commitar e subir para o GitHub
 
