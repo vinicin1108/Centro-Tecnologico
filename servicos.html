@@ -3,38 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serviços - Centro Tecnológico Eduvale</title>
+  <title>Centro Tecnológico Eduvale</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Montserrat:wght@600;700;800;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script defer src="app.js"></script>
 </head>
 <body>
   <div id="readingProgress" class="reading-progress"></div>
+
   <header class="topbar" id="topbar">
     <div class="container header-inner">
+      <a href="#home" class="home-link" aria-label="Home">
+        <img src="images/logo.png" alt="Centro Tecnológico Eduvale" loading="lazy">
+      </a>
+
       <nav class="main-nav" aria-label="Menu principal">
-        <a href="index.html">Home</a>
-        <a href="institucional.html">Institucional</a>
-        <a href="servicos.html">Serviços</a>
-        <a href="cursos.html">Cursos</a>
-        <a href="projetos.html">Projetos</a>
-        <a href="agenda.html">Agenda</a>
-        <a href="docentes.html">Docentes</a>
-        <a href="inclusao.html">Inclusão Digital</a>
-        <a href="seguranca.html">Segurança</a>
-        <a href="contato.html">Contato</a>
+        <a href="#institucional">Institucional</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#docentes">Docentes</a>
+        <a href="#inclusao">Inclusão Digital</a>
+        <a href="#seguranca">Segurança</a>
+        <a href="#contato">Contato</a>
       </nav>
+
       <div class="header-actions">
-        <button id="darkModeBtn" class="toggle-switch" aria-label="Alternar tema"><span></span></button>
-        <a href="contato.html" class="btn btn-signup">Inscreva-se</a>
+        <div aria-hidden="true" style="display:none"></div>
+        <a href="#contato" class="btn btn-signup">Contato</a>
+        <button id="burgerBtn" class="burger-btn" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">☰</button>
       </div>
     </div>
   </header>
 
+  <div id="sidebar" class="sidebar closed" aria-hidden="true" role="navigation">
+    <nav class="sidebar-nav">
+      <a href="#institucional" class="sidebar-link">Institucional</a>
+      <a href="#servicos" class="sidebar-link">Serviços</a>
+      <a href="#cursos" class="sidebar-link">Cursos</a>
+      <a href="#projetos" class="sidebar-link">Projetos</a>
+      <a href="#agenda" class="sidebar-link">Agenda</a>
+      <a href="#docentes" class="sidebar-link">Docentes</a>
+      <a href="#inclusao" class="sidebar-link">Inclusão</a>
+      <a href="#seguranca" class="sidebar-link">Segurança</a>
+      <a href="#contato" class="sidebar-link">Contato</a>
+    </nav>
+  </div>
+
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+  <div id="introScreen" class="intro-screen">
+    <div class="intro-content">
+      <h1>Centro Tecnológico Eduvale</h1>
+      <p id="typingText"></p>
+      <button class="btn btn-primary" onclick="hideIntro()">Entrar no site</button>
+    </div>
+  </div>
+
   <main class="main-content">
-    <section class="section section-cards container">
+    <section id="institucional" class="section section-glass container">
+      <div class="section-heading">
+        <span class="section-label">Institucional</span>
+        <h2>Missão, visão e valores do Centro Tecnológico</h2>
+      </div>
+
+      <div class="institutional-grid">
+        <article class="glass-card">
+          <h3>Missão</h3>
+          <p>Formar profissionais de tecnologia com pensamento crítico e capacidade de criar soluções reais.</p>
+        </article>
+        <article class="glass-card">
+          <h3>Visão</h3>
+          <p>Ser referência regional em educação técnica aplicada e inclusão digital.</p>
+        </article>
+        <article class="glass-card">
+          <h3>Valores</h3>
+          <p>Ética, inovação, compromisso com a comunidade e desenvolvimento sustentável.</p>
+        </article>
+      </div>
+
+      <div class="institutional-details">
+        <div>
+          <h3>Histórico</h3>
+          <p>
+            Fundamentada no ano de 1999, o Centro Universitário Eduvale – UNEDUVALE (anteriormente Faculdade Eduvale de Avaré)
+            obteve diversas conquistas ao longo de sua história. Apresentando crescimento qualitativo e quantitativo observáveis,
+            a Eduvale oferece cursos de graduação ministrados por docentes especialistas, mestres e doutores altamente qualificados
+            e reconhecidos profissionalmente no âmbito local e regional.
+          </p>
+          <p>
+            Sob criteriosa administração, metas foram alcançadas. A Eduvale superou expectativas em diversas frentes e hoje é
+            comprovadamente a Instituição de ensino superior de Avaré e região que apresenta maior número de atividades complementares
+            e práticas, maior aprovação de alunos em concursos e exames, maior participação em congressos e simpósios nacionais e
+            internacionais e maior índice de empregabilidade dos alunos.
+          </p>
+          <p>
+            Considerada modelo no campo do ensino superior em Avaré e na região, a meta da Eduvale é formar profissionais capacitados
+            e com pleno potencial para o mercado de trabalho.
+          </p>
+
+          <p><strong>ADIB SALOMÃO</strong></p>
+          <p>
+            O fundador da Associação Educacional do Vale da Jurumirim – UNEDUVALE – foi o causídico Dr. Adib Salomão, especializado em
+            Advocacia Educacional, com escritório na cidade de São Paulo. O Dr. Adib Salomão faleceu no dia 23 de julho de 2002, mas teve,
+            em vida, a felicidade de ver seu sonho realizado: ser também Mantenedor. Seu projeto educacional continua pelas mãos de seus filhos
+            e herdeiros.
+          </p>
+          <p>
+            ADIB SALOMÃO – brasileiro, nascido na cidade de Rio Grande, Estado do Rio Grande do Sul, em 15 de outubro de 1933, era filho de João Salomão
+            e Amabília Salomão. Foi casado com Juçara Beatriz Mansur Salomão (in memoriam).
+          </p>
+
+          <h3>Missão</h3>
+          <p>
+            NEDUVALE tem como missões formar profissionais competentes e preparados para uma sociedade em constante transformação, oferecer formação científica
+            e desenvolver o senso de responsabilidade social.
+          </p>
+
+          <h3>Princípios e Objetivos</h3>
+          <ul>
+            <li>Estimular a criação cultural e o desenvolvimento do espírito científico e do pensamento reflexivo;</li>
+            <li>Formar diplomados nas diferentes áreas de conhecimento, aptos para a inserção em setores profissionais;</li>
+            <li>Incentivar o trabalho de pesquisa e investigação científica, visando o desenvolvimento da ciência e da tecnologia;</li>
+            <li>Promover a divulgação de conhecimentos culturais, científicos e técnicos que constituem patrimônio da humanidade.</li>
+            <li>Comunicar o saber através do ensino, de publicações ou de outras formas de comunicação;</li>
+            <li>
+              Estimular o conhecimento dos problemas de mundo presente, em particular os nacionais e regionais, prestar serviços especializados à comunidade e
+              estabelecer com esta, uma relação de reciprocidade;
+            </li>
+            <li>
+              Promover a extensão, aberta à participação da população, visando a difusão das conquistas e benefícios resultantes da criação cultural e da
+              pesquisa científica e tecnológica geradas na Instituição.
+            </li>
+          </ul>
+        </div>
+
+        <div class="institutional-images">
+          <img src="https://images.unsplash.com/photo-1591696331112-4bb5fa40ae36?auto=format&fit=crop&w=900&q=80" alt="Alunos em laboratório" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Estudantes de TI" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="section section-cards container">
       <div class="section-heading">
         <span class="section-label">Serviços</span>
         <h2>Como o Centro apoia os estudantes</h2>
@@ -43,17 +157,17 @@
         <article class="service-card neon-card hover-lift">
           <h3>Mentoria técnica</h3>
           <p>Guias e feedbacks para aprimorar projetos, apresentações e práticas profissionais.</p>
-          <a class="link-secondary" href="contato.html">Saiba mais</a>
+          <a class="link-secondary" href="#contato">Saiba mais</a>
         </article>
         <article class="service-card neon-card hover-lift">
           <h3>Laboratórios modernos</h3>
           <p>Ambiente completo para aulas práticas de desenvolvimento, redes e inovação.</p>
-          <a class="link-secondary" href="contato.html">Saiba mais</a>
+          <a class="link-secondary" href="#contato">Saiba mais</a>
         </article>
         <article class="service-card neon-card hover-lift">
           <h3>Inclusão digital</h3>
           <p>Projetos sociais que levam tecnologia e conhecimento para a comunidade.</p>
-          <a class="link-secondary" href="inclusao.html">Saiba mais</a>
+          <a class="link-secondary" href="#inclusao">Saiba mais</a>
         </article>
       </div>
     </section>
@@ -68,9 +182,15 @@
         </div>
 
         <div class="footer-compact-actions" aria-label="Ações rápidas">
+          <a class="footer-cta" href="mailto:comercial@eduvaleavare.com.br">
+            ✉️ <span>E-mail</span>
           </a>
           <a class="footer-cta" href="#" onclick="return false;" aria-label="Abrir WhatsApp">
-          <a class="footer-cta" href="https://www.eduvaleavare.com.br" target="_blank" rel="noopener">🌐 <span>Site</span></a>
+            💬 <span>WhatsApp</span>
+          </a>
+          <a class="footer-cta" href="https://www.eduvaleavare.com.br" target="_blank" rel="noopener">
+            🌐 <span>Site</span>
+          </a>
         </div>
       </div>
 
@@ -109,3 +229,4 @@
   </footer>
 </body>
 </html>
+

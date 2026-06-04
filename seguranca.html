@@ -3,38 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Segurança - Centro Tecnológico Eduvale</title>
+  <title>Centro Tecnológico Eduvale</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Montserrat:wght@600;700;800;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script defer src="app.js"></script>
 </head>
 <body>
   <div id="readingProgress" class="reading-progress"></div>
+
   <header class="topbar" id="topbar">
     <div class="container header-inner">
+      <a href="#home" class="home-link" aria-label="Home">
+        <img src="images/logo.png" alt="Centro Tecnológico Eduvale" loading="lazy">
+      </a>
+
       <nav class="main-nav" aria-label="Menu principal">
-        <a href="index.html">Home</a>
-        <a href="institucional.html">Institucional</a>
-        <a href="servicos.html">Serviços</a>
-        <a href="cursos.html">Cursos</a>
-        <a href="projetos.html">Projetos</a>
-        <a href="agenda.html">Agenda</a>
-        <a href="docentes.html">Docentes</a>
-        <a href="inclusao.html">Inclusão Digital</a>
-        <a href="seguranca.html">Segurança</a>
-        <a href="contato.html">Contato</a>
+        <a href="#institucional">Institucional</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#docentes">Docentes</a>
+        <a href="#inclusao">Inclusão Digital</a>
+        <a href="#seguranca">Segurança</a>
+        <a href="#contato">Contato</a>
       </nav>
+
       <div class="header-actions">
-        <button id="darkModeBtn" class="toggle-switch" aria-label="Alternar tema"><span></span></button>
-        <a href="contato.html" class="btn btn-signup">Inscreva-se</a>
+        <div aria-hidden="true" style="display:none"></div>
+        <a href="#contato" class="btn btn-signup">Contato</a>
+        <button id="burgerBtn" class="burger-btn" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">☰</button>
       </div>
     </div>
   </header>
 
+  <div id="sidebar" class="sidebar closed" aria-hidden="true" role="navigation">
+    <nav class="sidebar-nav">
+      <a href="#institucional" class="sidebar-link">Institucional</a>
+      <a href="#servicos" class="sidebar-link">Serviços</a>
+      <a href="#cursos" class="sidebar-link">Cursos</a>
+      <a href="#projetos" class="sidebar-link">Projetos</a>
+      <a href="#agenda" class="sidebar-link">Agenda</a>
+      <a href="#docentes" class="sidebar-link">Docentes</a>
+      <a href="#inclusao" class="sidebar-link">Inclusão</a>
+      <a href="#seguranca" class="sidebar-link">Segurança</a>
+      <a href="#contato" class="sidebar-link">Contato</a>
+    </nav>
+  </div>
+
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+  <div id="introScreen" class="intro-screen">
+    <div class="intro-content">
+      <h1>Centro Tecnológico Eduvale</h1>
+      <p id="typingText"></p>
+      <button class="btn btn-primary" onclick="hideIntro()">Entrar no site</button>
+    </div>
+  </div>
+
   <main class="main-content">
-    <section class="section section-security container">
+    <section id="seguranca" class="section section-security container">
       <div class="section-heading">
         <span class="section-label">Segurança</span>
         <h2>Privacidade e boas práticas</h2>
@@ -65,9 +95,15 @@
         </div>
 
         <div class="footer-compact-actions" aria-label="Ações rápidas">
-          <a class="footer-cta" href="mailto:comercial@eduvaleavare.com.br">✉️ <span>E-mail</span></a>
-          <a class="footer-cta" href="#" onclick="return false;" aria-label="Abrir WhatsApp">💬 <span>WhatsApp</span></a>
-          <a class="footer-cta" href="https://www.eduvaleavare.com.br" target="_blank" rel="noopener">🌐 <span>Site</span></a>
+          <a class="footer-cta" href="mailto:comercial@eduvaleavare.com.br">
+            ✉️ <span>E-mail</span>
+          </a>
+          <a class="footer-cta" href="#" onclick="return false;" aria-label="Abrir WhatsApp">
+            💬 <span>WhatsApp</span>
+          </a>
+          <a class="footer-cta" href="https://www.eduvaleavare.com.br" target="_blank" rel="noopener">
+            🌐 <span>Site</span>
+          </a>
         </div>
       </div>
 
@@ -106,3 +142,4 @@
   </footer>
 </body>
 </html>
+
