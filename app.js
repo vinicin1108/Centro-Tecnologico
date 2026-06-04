@@ -9,6 +9,7 @@ const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
 const readingProgress = document.getElementById('readingProgress');
 
+
 const introPhrases = [
   'Tecnologia aplicada à educação.',
   'Projetos reais, laboratórios modernos.',
@@ -37,25 +38,35 @@ function typeIntro() {
 
 typeIntro();
 
+function setSidebarA11y(isOpen) {
+  if (!sidebar) return;
+  sidebar.setAttribute('aria-hidden', String(!isOpen));
+}
+
 function toggleSidebar() {
   if (!sidebar || !sidebarOverlay) return;
   const isOpen = sidebar.classList.toggle('open');
   sidebarOverlay.classList.toggle('open', isOpen);
+  setSidebarA11y(isOpen);
 }
 
 function hideSidebar() {
   if (!sidebar || !sidebarOverlay) return;
   sidebar.classList.remove('open');
   sidebarOverlay.classList.remove('open');
+  setSidebarA11y(false);
+  if (burgerBtn) burgerBtn.setAttribute('aria-expanded', 'false');
 }
 
 const sections = document.querySelectorAll('.main-content section');
 
 function showSection(id) {
+  if (!sections || !sections.length) return;
   sections.forEach((section) => {
     section.classList.toggle('hidden-section', section.id !== id);
   });
 }
+
 
 function handleHash() {
   const hash = window.location.hash.replace('#', '') || 'home';
@@ -65,6 +76,7 @@ function handleHash() {
   targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+
 function scrollToSection(id) {
   const section = document.getElementById(id);
   if (!section) return;
@@ -73,7 +85,15 @@ function scrollToSection(id) {
 }
 
 if (burgerBtn) {
-  burgerBtn.addEventListener('click', toggleSidebar);
+  burgerBtn.addEventListener('click', () => {
+    toggleSidebar();
+    if (!sidebar || !burgerBtn) return;
+    const isOpen = sidebar.classList.contains('open');
+    burgerBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // ensure initial state
+  if (sidebar) burgerBtn.setAttribute('aria-expanded', String(sidebar.classList.contains('open')));
 }
 
 if (sidebarOverlay) {
@@ -86,18 +106,21 @@ if (sidebar) {
   });
 }
 
-filterTabs.forEach((tab) => {
-  tab.addEventListener('click', () => {
-    filterTabs.forEach((button) => button.classList.remove('active'));
-    tab.classList.add('active');
+if (courseGrid && filterTabs.length) {
+  filterTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach((button) => button.classList.remove('active'));
+      tab.classList.add('active');
 
-    const selected = tab.dataset.filter;
-    courseGrid.querySelectorAll('.course-card').forEach((card) => {
-      const shouldShow = selected === 'all' || card.dataset.category === selected;
-      card.style.display = shouldShow ? 'grid' : 'none';
+      const selected = tab.dataset.filter;
+      courseGrid.querySelectorAll('.course-card').forEach((card) => {
+        const shouldShow = selected === 'all' || card.dataset.category === selected;
+        card.style.display = shouldShow ? 'grid' : 'none';
+      });
     });
   });
-});
+}
+
 
 if (contactForm) {
   contactForm.addEventListener('submit', (event) => {
@@ -127,6 +150,7 @@ if (contactForm) {
 }
 
 function updateReadingProgress() {
+  if (!readingProgress) return;
   const scrollTop = window.scrollY;
   const docHeight = document.body.scrollHeight - window.innerHeight;
   const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
@@ -135,6 +159,7 @@ function updateReadingProgress() {
 
 window.addEventListener('scroll', updateReadingProgress);
 updateReadingProgress();
+
 
 function initAnchorScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -172,17 +197,18 @@ if (introScreen) {
 handleHash();
 
 // A) Apply reveal-hidden to all main sections (automatic)
-document.querySelectorAll('main .section, main .hero-section').forEach(el => {
+document.querySelectorAll('main .section, main .hero-section').forEach((el) => {
   if (!el.classList.contains('reveal-hidden')) el.classList.add('reveal-hidden');
 });
+
 
 /* ----------------------
    Reveal on scroll
    ---------------------- */
 const revealElements = document.querySelectorAll('.reveal-hidden');
 if (revealElements.length) {
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('reveal');
         revealObserver.unobserve(entry.target);
@@ -190,7 +216,8 @@ if (revealElements.length) {
     });
   }, { threshold: 0.12 });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  revealElements.forEach((el) => revealObserver.observe(el));
+
 }
 
 // C) Magnetic buttons and refined hover-lift
