@@ -58,7 +58,14 @@ function hideSidebar() {
   if (burgerBtn) burgerBtn.setAttribute('aria-expanded', 'false');
 }
 
-const sections = document.querySelectorAll('.main-content section');
+const isIndexPage = (() => {
+  const p = window.location.pathname;
+  return p.endsWith('/index.html') || p === '/' || p.endsWith('/Centro-Tecnologico/index.html');
+})();
+
+const sections = isIndexPage
+  ? document.querySelectorAll('.main-content section')
+  : [];
 
 function showSection(id) {
   if (!sections || !sections.length) return;
@@ -67,22 +74,25 @@ function showSection(id) {
   });
 }
 
-
 function handleHash() {
+  if (!isIndexPage) return;
+
   const hash = window.location.hash.replace('#', '') || 'home';
   const targetSection = document.getElementById(hash) || document.getElementById('home');
   if (!targetSection) return;
+
   showSection(targetSection.id);
   targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-
 function scrollToSection(id) {
+  if (!isIndexPage) return;
   const section = document.getElementById(id);
   if (!section) return;
   showSection(id);
   section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
 
 if (burgerBtn) {
   burgerBtn.addEventListener('click', () => {
@@ -195,6 +205,9 @@ if (introScreen) {
 } */
 
 handleHash();
+
+// Em páginas diferentes do index, não aplicamos showSection/hidden-section.
+// Isso evita quebra visual no GitHub Pages quando a página é standalone (ex.: institucional.html).
 
 // A) Apply reveal-hidden to all main sections (automatic)
 document.querySelectorAll('main .section, main .hero-section').forEach((el) => {
