@@ -800,11 +800,19 @@ textarea {
   border-radius: 24px;
 }
 
-/* Textos longos no institucional (Histórico/Missão/Objetivos) */
+/* Textos longos no institucional (Histórico/Missão/Objetivos)
+   Garante legibilidade e evita que algum container fique invisível por contraste. */
 #institucional .institutional-details > div p,
 #institucional .institutional-details > div li {
-  color: rgba(255,255,255,0.92);
+  color: rgba(255,255,255,0.95);
+  font-size: 1rem;
+  line-height: 1.75;
 }
+
+#institucional .institutional-details {
+  color: rgba(255,255,255,0.95);
+}
+
 
 #institucional .institutional-details > div ul {
   margin: 0.75rem 0 0;
