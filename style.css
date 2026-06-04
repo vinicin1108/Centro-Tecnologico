@@ -341,11 +341,11 @@ textarea {
   pointer-events: none;
 }
 
-/* Em páginas internas, o introScreen deve ficar oculto (para não “tapar” o conteúdo). */
-main:not(#home) #introScreen,
-main:not([id="home"]) #introScreen {
-  display: none;
+/* Intro: evitar tapar o conteúdo em páginas internas */
+.page-interna #introScreen {
+  display: none !important;
 }
+
 
 
 .intro-content {
@@ -811,14 +811,15 @@ main:not([id="home"]) #introScreen {
    Garante legibilidade e evita que algum container fique invisível por contraste. */
 #institucional .institutional-details > div p,
 #institucional .institutional-details > div li {
-  color: rgba(255,255,255,1);
+  color: #111111;
   font-size: 1rem;
   line-height: 1.75;
 }
 
 #institucional .institutional-details {
-  color: rgba(255,255,255,1);
+  color: #111111;
 }
+
 
 
 

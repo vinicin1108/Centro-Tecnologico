@@ -36,11 +36,7 @@ function typeIntro() {
   }
 }
 
-const isIntroDisabled = document.body && document.body.classList.contains('page-interna');
-if (!isIntroDisabled) {
-  typeIntro();
-}
-
+typeIntro();
 
 function setSidebarA11y(isOpen) {
   if (!sidebar) return;
@@ -62,14 +58,7 @@ function hideSidebar() {
   if (burgerBtn) burgerBtn.setAttribute('aria-expanded', 'false');
 }
 
-const isIndexPage = (() => {
-  const p = window.location.pathname;
-  return p.endsWith('/index.html') || p === '/' || p.endsWith('/Centro-Tecnologico/index.html');
-})();
-
-const sections = isIndexPage
-  ? document.querySelectorAll('.main-content section')
-  : [];
+const sections = document.querySelectorAll('.main-content section');
 
 function showSection(id) {
   if (!sections || !sections.length) return;
@@ -78,25 +67,22 @@ function showSection(id) {
   });
 }
 
-function handleHash() {
-  if (!isIndexPage) return;
 
+function handleHash() {
   const hash = window.location.hash.replace('#', '') || 'home';
   const targetSection = document.getElementById(hash) || document.getElementById('home');
   if (!targetSection) return;
-
   showSection(targetSection.id);
   targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+
 function scrollToSection(id) {
-  if (!isIndexPage) return;
   const section = document.getElementById(id);
   if (!section) return;
   showSection(id);
   section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
 
 if (burgerBtn) {
   burgerBtn.addEventListener('click', () => {
@@ -197,10 +183,9 @@ function hideIntro() {
   clearTimeout(typingTimer);
 }
 
-if (introScreen && !isIntroDisabled) {
+if (introScreen) {
   window.hideIntro = hideIntro;
 }
-
 
 // dark mode removido (botão ocultado no header)
 /* if (darkModeBtn) {
@@ -210,9 +195,6 @@ if (introScreen && !isIntroDisabled) {
 } */
 
 handleHash();
-
-// Em páginas diferentes do index, não aplicamos showSection/hidden-section.
-// Isso evita quebra visual no GitHub Pages quando a página é standalone (ex.: institucional.html).
 
 // A) Apply reveal-hidden to all main sections (automatic)
 document.querySelectorAll('main .section, main .hero-section').forEach((el) => {
@@ -340,3 +322,4 @@ updateActiveNav();
     }
   });
 })();
+
