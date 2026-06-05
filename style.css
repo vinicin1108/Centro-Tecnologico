@@ -61,7 +61,9 @@ textarea {
 
 .topbar {
   position: fixed;
-  inset: 0 auto auto;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   z-index: 150;
   background: linear-gradient(90deg, #112544, #0f243f);
@@ -75,6 +77,7 @@ textarea {
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 0;
+  flex-wrap: wrap;
 }
 
 .main-nav {
@@ -85,8 +88,10 @@ textarea {
   flex-wrap: nowrap;
   overflow-x: auto;
   white-space: nowrap;
-  padding: 0.2rem 1rem;
-  flex: 1 1 auto; /* allow nav to take available space and center correctly */
+  padding: 0.2rem 0.75rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0 1rem;
 }
 
 .main-nav::-webkit-scrollbar {
@@ -125,20 +130,27 @@ textarea {
   text-decoration: none;
   background-color: #ffffff;
   border-radius: 8px;
-  padding: 0.35rem 0.6rem;
+  padding: 0.25rem 0.5rem;
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   flex: 0 0 auto;
-  z-index: 175;
   height: 52px;
-  min-width: 130px;
+  min-width: 0;
+  max-width: 160px;
+  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  z-index: 220;
 }
 
 .home-link img {
   display: block;
-  height: 100%;
+  height: auto;
+  max-height: 100%;
   width: auto;
-  max-width: 120px;
+  max-width: 140px;
   object-fit: contain;
 
   /* Garante visibilidade (caso algum filtro/opacidade esteja afetando) */
@@ -151,8 +163,8 @@ textarea {
 .home-link:hover,
 .home-link:focus-visible {
   background-color: #f0f0f0;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* Accessibility helper */
@@ -168,31 +180,6 @@ textarea {
   border: 0;
 }
 
-.home-link:hover,
-.home-link:focus-visible {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-1px);
-}
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  white-space: nowrap;
-  padding: 0.2rem 0.75rem;
-  flex: 1 1 auto; /* allow nav to take available space and center correctly */
-  min-width: 0;
-}
-
-.main-nav a {
-  min-width: max-content;
-  padding: 0.35rem 0.6rem;
-}
-
-
 .main-nav a:hover,
 .sidebar-link:hover,
 .main-nav a.active,
@@ -205,6 +192,13 @@ textarea {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.header-actions > * {
+  min-width: 0;
 }
 
 .toggle-switch {
@@ -266,15 +260,6 @@ textarea {
   cursor: pointer;
 }
 
-.burger-btn {
-  display: none;
-  border: none;
-  background: none;
-  color: var(--primary);
-  font-size: 1.35rem;
-  cursor: pointer;
-}
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -286,11 +271,111 @@ textarea {
   padding: 6rem 1.5rem 1.5rem;
   transform: translateX(-110%);
   transition: transform 0.3s ease;
-  z-index: 160;
+  z-index: 220;
+  pointer-events: auto;
+}
+
+/* Explicit closed state to avoid class conflicts when both 'closed' and 'open' are present */
+.sidebar.closed {
+  transform: translateX(-110%) !important;
 }
 
 .sidebar.open {
-  transform: translateX(0);
+  transform: translateX(0) !important;
+}
+
+/* Sidebar visual styles to match site theme and ensure links are readable */
+.sidebar {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.sidebar-nav {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-link {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.6rem 0.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  position: relative;
+  z-index: 221;
+  pointer-events: auto;
+}
+
+.sidebar-link:hover,
+.sidebar-link:focus {
+  background: rgba(15,36,63,0.04);
+  color: var(--primary);
+}
+
+/* Mobile: fullscreen sidebar style (slide from left, full-width menu list) */
+@media (max-width: 900px) {
+  .sidebar {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(-100%);
+    padding: 0;
+    background: var(--surface);
+    box-shadow: 0 20px 60px rgba(15,36,63,0.15);
+    border-right: none;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(90deg, #112544, #0f243f);
+    color: #fff;
+  }
+
+  .sidebar-logo img {
+    height: 34px;
+    width: auto;
+    display: block;
+  }
+
+  .sidebar-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+
+  .sidebar-nav {
+    margin: 0;
+    padding: 0.25rem 0;
+  }
+
+  .sidebar-link {
+    display: block;
+    background: #fff;
+    color: var(--text);
+    padding: 1rem 1rem;
+    border-bottom: 1px solid rgba(15,36,63,0.06);
+    font-weight: 600;
+  }
+
+  .sidebar-link:hover,
+  .sidebar-link:focus {
+    background: rgba(15,36,63,0.02);
+    color: var(--primary);
+  }
+
 }
 
 .sidebar-nav {
@@ -305,12 +390,14 @@ textarea {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease;
-  z-index: 155;
+  z-index: 180;
+  pointer-events: none;
 }
 
 .sidebar-overlay.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .reading-progress {
@@ -506,6 +593,15 @@ textarea {
   font-size: clamp(2rem, 3vw, 2.8rem);
 }
 
+/* Larger subtitle for course pages */
+.subtitle {
+  font-size: 1.125rem; /* larger than default */
+  font-weight: 700;
+  color: #000000;
+  margin-top: 0.6rem;
+  line-height: 1.4;
+}
+
 /* Docentes grid and card styles */
 .docentes-grid {
   display: grid;
@@ -604,6 +700,15 @@ textarea {
 .course-overview p {
   margin: 0 0 1rem;
   line-height: 1.78;
+}
+
+.course-overview-image {
+  display: block;
+  width: 100%;
+  max-width: 680px;
+  border-radius: 24px;
+  margin: 0 0 1.5rem;
+  object-fit: cover;
 }
 
 .course-info-grid {
@@ -862,6 +967,14 @@ textarea {
   background: linear-gradient(135deg, var(--accent), var(--primary));
 }
 
+.project-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px; /* match parent */
+}
+
 .course-badge {
   display: inline-flex;
   align-items: center;
@@ -874,6 +987,10 @@ textarea {
   margin-top: 1.2rem;
 }
 
+.neon-card {
+  position: relative;
+}
+
 .neon-card::before {
   content: '';
   position: absolute;
@@ -881,19 +998,38 @@ textarea {
   background: radial-gradient(circle at top left, rgba(255, 217, 0, 0.2), transparent 25%);
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .neon-card:hover::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 .hover-lift {
+  transform: translateY(0);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
 }
 
 .hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 60px rgba(15, 36, 63, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 22px 40px rgba(15, 36, 63, 0.12);
+}
+
+.link-secondary {
+  display: inline-flex;
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.link-secondary:hover,
+.link-secondary:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
 }
 
 .course-filter {
@@ -1458,6 +1594,10 @@ textarea {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
   }
 
+  .institutional-images {
+    grid-template-columns: 1fr;
+  }
+
   .contact-block {
     grid-template-columns: 1fr;
   }
@@ -1479,12 +1619,51 @@ textarea {
     width: min(320px, 100%);
   }
 
+  .header-inner {
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .header-actions {
+    width: auto;
+    flex: 0 1 auto;
+    justify-content: flex-end;
+  }
+
+  .btn-signup {
+    flex-shrink: 0;
+  }
+
+  .home-link {
+    flex-shrink: 0;
+  }
+
+  .topbar {
+    padding: 0.85rem 0;
+  }
+
   .hero-section {
     padding-top: 5rem;
     min-height: 80vh;
   }
-  .site-logo img { height: 38px; }
+  .home-link img { height: 38px; }
   .hero-panel { width: calc(100% - 2rem); padding: 2.25rem 1.25rem; border-radius: 20px; }
+
+  .institutional-details {
+    display: block;
+  }
+
+  .institutional-grid,
+  .service-grid,
+  .course-grid,
+  .highlights-section,
+  .projects-grid,
+  .agenda-grid,
+  .docentes-grid,
+  .security-grid,
+  .grade-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 
@@ -1494,7 +1673,7 @@ textarea {
     align-items: center;
   }
 
-  .site-logo img { height: 36px; }
+  .home-link img { height: 36px; }
 
   .institutional-images,
   .service-grid,
@@ -1525,7 +1704,7 @@ textarea {
   .section {
     padding: 4rem 0;
   }
-  .site-logo img { height: 32px; }
+  .home-link img { height: 32px; }
   .hero-panel { padding: 1.6rem 1rem; border-radius: 16px; }
   .hero-badges { gap: 0.5rem; }
   .badge { padding: 0.5rem 0.75rem; font-size: 0.9rem; }

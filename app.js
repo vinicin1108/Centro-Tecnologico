@@ -50,6 +50,7 @@ function setSidebarA11y(isOpen) {
 function toggleSidebar() {
   if (!sidebar || !sidebarOverlay) return;
   const isOpen = sidebar.classList.toggle('open');
+  sidebar.classList.toggle('closed', !isOpen);
   sidebarOverlay.classList.toggle('open', isOpen);
   setSidebarA11y(isOpen);
 }
@@ -57,6 +58,7 @@ function toggleSidebar() {
 function hideSidebar() {
   if (!sidebar || !sidebarOverlay) return;
   sidebar.classList.remove('open');
+  sidebar.classList.add('closed');
   sidebarOverlay.classList.remove('open');
   setSidebarA11y(false);
   if (burgerBtn) burgerBtn.setAttribute('aria-expanded', 'false');
@@ -116,7 +118,18 @@ if (sidebarOverlay) {
 
 if (sidebar) {
   sidebar.querySelectorAll('.sidebar-link').forEach((link) => {
-    link.addEventListener('click', hideSidebar);
+    link.addEventListener('click', () => {
+      setTimeout(hideSidebar, 0);
+    });
+  });
+}
+
+// Close button inside sidebar (mobile fullscreen header)
+const sidebarCloseBtn = document.querySelector('.sidebar-close');
+if (sidebarCloseBtn) {
+  sidebarCloseBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    hideSidebar();
   });
 }
 
