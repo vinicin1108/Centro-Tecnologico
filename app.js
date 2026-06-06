@@ -78,8 +78,13 @@ function showSection(id) {
   sections.forEach((section) => {
     const hide = section.id !== id && section.id !== '' && section.id !== 'destaques';
     section.classList.toggle('hidden-section', hide);
+    if (!hide) {
+      section.classList.remove('reveal-hidden');
+      section.classList.add('reveal');
+    }
   });
 }
+
 
 
 function handleHash() {
@@ -243,8 +248,10 @@ handleHash();
 
 // A) Apply reveal-hidden to all main sections (automatic)
 document.querySelectorAll('main .section, main .hero-section').forEach((el) => {
+  if (el.id === 'home' || el.id === 'destaques') return;
   if (!el.classList.contains('reveal-hidden')) el.classList.add('reveal-hidden');
 });
+
 
 
 /* ----------------------
