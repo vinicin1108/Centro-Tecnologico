@@ -365,3 +365,92 @@ updateActiveNav();
     }
   });
 })();
+
+/* ================================================================
+   AGENDA DINÂMICA â€” eventos por mês
+   (aplica somente quando a página possuir #agendaGrid)
+   ================================================================ */
+
+var AGENDA_MES_INICIAL = 1;
+var AGENDA_MESES = ['Maio 2026','Junho 2026','Julho 2026'];
+var AGENDA_EVENTOS = {
+  'Maio 2026': [
+    { dia:'10', mes:'Mai', destaque:false, titulo:'Semana acadêmica', info:'09:00 • Auditório central' }
+  ],
+  'Junho 2026': [
+    { dia:'01', mes:'Jun', destaque:false, titulo:'Prazo final — relatório de estágio', info:'' },
+    { dia:'04', mes:'Jun', destaque:true,  titulo:'Corpus Christi — aulas suspensas', info:'04 a 06 Jun' },
+    { dia:'15', mes:'Jun', destaque:false, titulo:'Prazo final — lançamento de notas', info:'' },
+    { dia:'20', mes:'Jun', destaque:false, titulo:'Fim do período letivo', info:'' },
+    { dia:'22', mes:'Jun', destaque:false, titulo:'Exames finais', info:'' },
+    { dia:'23', mes:'Jun', destaque:false, titulo:'Exames finais', info:'' },
+    { dia:'24', mes:'Jun', destaque:false, titulo:'Exames finais', info:'' },
+    { dia:'25', mes:'Jun', destaque:false, titulo:'Exames finais', info:'' }
+  ],
+  'Julho 2026': [
+    { dia:'01', mes:'Jul', destaque:false, titulo:'Início do recesso acadêmico', info:'' }
+  ]
+};
+
+function agendaRenderMes(indice) {
+  var nomeMes = AGENDA_MESES[indice];
+  var lista = AGENDA_EVENTOS[nomeMes] || [];
+
+  var grid = document.getElementById('agendaGrid');
+  var titulo = document.getElementById('agendaMesTitulo');
+  var btnAnt = document.getElementById('agendaBtnAnterior');
+  var btnProx = document.getElementById('agendaBtnProximo');
+
+  if (titulo) titulo.textContent = nomeMes;
+  if (btnAnt) btnAnt.disabled = (indice === 0);
+  if (btnProx) btnProx.disabled = (indice === AGENDA_MESES.length - 1);
+
+  if (!grid) return;
+
+  if (!lista.length) {
+    grid.innerHTML = '<p class="agenda-vazia">Nenhum evento neste mês.</p>';
+    return;
+  }
+
+  grid.innerHTML = lista.map(function (e) {
+    var destaqueClass = e.destaque ? ' destaque' : '';
+    var infoHtml = e.info ? '<p>' + e.info + '</p>' : '';
+
+    return (
+      '<div class="agenda-card' + destaqueClass + '">' +
+        '<span class="agenda-data">' + e.dia + ' ' + e.mes + '</span>' +
+        '<h3>' + e.titulo + '</h3>' +
+        infoHtml +
+      '</div>'
+    );
+  }).join('');
+}
+
+function initAgenda() {
+  if (!document.getElementById('agendaGrid')) return;
+
+  var mesAtual = AGENDA_MES_INICIAL;
+  agendaRenderMes(mesAtual);
+
+  var btnAnt = document.getElementById('agendaBtnAnterior');
+  if (btnAnt) {
+    btnAnt.addEventListener('click', function () {
+      if (mesAtual > 0) {
+        mesAtual -= 1;
+        agendaRenderMes(mesAtual);
+      }
+    });
+  }
+
+  var btnProx = document.getElementById('agendaBtnProximo');
+  if (btnProx) {
+    btnProx.addEventListener('click', function () {
+      if (mesAtual < AGENDA_MESES.length - 1) {
+        mesAtual += 1;
+        agendaRenderMes(mesAtual);
+      }
+    });
+  }
+}
+
+initAgenda();

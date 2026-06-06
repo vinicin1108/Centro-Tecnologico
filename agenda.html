@@ -15,9 +15,10 @@
 
   <header class="topbar" id="topbar">
     <div class="container header-inner">
-      <a href="#home" class="home-link" aria-label="Home">
+      <a href="index.html" class="home-link" aria-label="Home">
         <img src="images/logo.png" alt="Centro Tecnológico Eduvale" loading="lazy">
       </a>
+
 
   <nav class="main-nav" aria-label="Menu principal">
         <a href="institucional.html">Institucional</a>
@@ -74,24 +75,14 @@
         <span class="section-label">Agenda</span>
         <h2>Eventos e ações futuras</h2>
       </div>
-      <div class="agenda-grid">
-        <article class="agenda-card highlight-event">
-          <span class="agenda-date">12 Jun</span>
-          <h3>Semana de Tecnologia</h3>
-          <p>09:00 • Auditório central</p>
-        </article>
-        <article class="agenda-card">
-          <span class="agenda-date">20 Jun</span>
-          <h3>Oficina de Programação</h3>
-          <p>14:00 • Laboratório de TI</p>
-        </article>
-        <article class="agenda-card">
-          <span class="agenda-date">05 Jul</span>
-          <h3>Hackathon Social</h3>
-          <p>10:00 • Espaço de inovação</p>
-        </article>
+      <div class="agenda-nav" role="navigation" aria-label="Navegação de meses">
+        <button id="agendaBtnAnterior" class="agenda-nav-btn">← Anterior</button>
+        <span id="agendaMesTitulo" class="agenda-mes-titulo" aria-live="polite"></span>
+        <button id="agendaBtnProximo" class="agenda-nav-btn">Próximo →</button>
       </div>
+      <div id="agendaGrid" class="agenda-grid" aria-live="polite"></div>
     </section>
+
 
     <section id="noticias" class="section section-agenda container">
       <div class="section-heading">

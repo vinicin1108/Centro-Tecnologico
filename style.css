@@ -1326,6 +1326,15 @@ textarea {
   padding: 1.1rem 1.1rem;
 }
 
+.footer-compact-card h3,
+.footer-compact-card p,
+.footer-compact-card a,
+.footer-compact-card ul,
+.footer-compact-card li {
+  color: #ffffff;
+}
+
+
 .footer-title {
   color: #fff;
 }
@@ -1710,3 +1719,69 @@ textarea {
   .badge { padding: 0.5rem 0.75rem; font-size: 0.9rem; }
   .btn-signup { padding: 0.6rem 1rem; font-size: 0.95rem; }
 }
+
+/* ================================================================
+   AGENDA DINÂMICA â€” estilos de navegação por mês
+   ================================================================ */
+.agenda-nav {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin-bottom:24px;
+}
+
+.agenda-nav-btn {
+  background:#00008B;
+  color:#FFD700;
+  border:none;
+  padding:8px 18px;
+  border-radius:20px;
+  font-size:14px;
+  font-family:inherit;
+  cursor:pointer;
+  transition:background 0.2s,color 0.2s;
+}
+
+.agenda-nav-btn:hover {
+  background:#FFD700;
+  color:#00008B;
+}
+
+.agenda-nav-btn:disabled {
+  opacity:0.35;
+  cursor:not-allowed;
+  pointer-events:none;
+}
+
+.agenda-mes-titulo {
+  font-size:18px;
+  font-weight:600;
+  color:#00008B;
+  min-width:150px;
+  text-align:center;
+}
+
+.agenda-data {
+  display:inline-flex;
+  align-items:center;
+  background:#FFD700;
+  border-radius:10px;
+  padding:6px 14px;
+  font-size:13px;
+  font-weight:600;
+  color:#333;
+  align-self:flex-start;
+}
+
+.agenda-card.destaque {
+  border:2px solid #FFD700;
+}
+
+.agenda-vazia {
+  text-align:center;
+  color:#999;
+  padding:2rem;
+  grid-column:1/-1;
+}
+
