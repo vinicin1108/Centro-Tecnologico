@@ -76,9 +76,11 @@ const sections = isIndexPage
 function showSection(id) {
   if (!sections || !sections.length) return;
   sections.forEach((section) => {
-    section.classList.toggle('hidden-section', section.id !== id);
+    const hide = section.id !== id && section.id !== '' && section.id !== 'destaques';
+    section.classList.toggle('hidden-section', hide);
   });
 }
+
 
 function handleHash() {
   if (!isIndexPage) return;
