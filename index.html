@@ -12,7 +12,6 @@
 </head>
 <body>
   <div id="readingProgress" class="reading-progress"></div>
-
   <header class="topbar" id="topbar">
     <div class="container header-inner">
       <a href="index.html" class="home-link" aria-label="Home">
@@ -28,15 +27,12 @@
         <a href="inclusao.html">Inclusão Digital</a>
         <a href="seguranca.html">Segurança</a>
       </nav>
-
       <div class="header-actions">
-        <div aria-hidden="true" style="display:none"></div>
         <a href="contato.html" class="btn btn-signup">Contato</a>
         <button id="burgerBtn" class="burger-btn" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">☰</button>
       </div>
     </div>
   </header>
-
   <div id="sidebar" class="sidebar closed" aria-hidden="true" role="navigation">
     <div class="sidebar-top">
       <a href="index.html" class="home-link sidebar-logo" aria-label="Home">
@@ -56,11 +52,7 @@
       <a href="contato.html" class="sidebar-link">Contato</a>
     </nav>
   </div>
-
   <div id="sidebarOverlay" class="sidebar-overlay"></div>
-
-
-
   <main class="main-content">
     <section id="home" class="hero-section">
       <div class="hero-overlay"></div>
@@ -81,30 +73,65 @@
         </div>
       </div>
     </section>
-
-    <section class="section highlights-section container">
-      <article class="highlight-card">
-        <h2>Novidades</h2>
-        <p>Vestibular, calendário e notícias sobre os cursos e eventos do Centro.</p>
-      </article>
-      <article class="highlight-card">
-        <h2>Redes Sociais</h2>
-        <p>Acompanhe o Eduvale no Instagram e fique por dentro de atividades e vagas.</p>
-      </article>
-      <article class="highlight-card">
-        <h2>Localização</h2>
-        <p>Rua Goiás, 1121 • Centro de Avaré — próximo ao HVET.</p>
-      </article>
+    <section class="destaques" id="destaques">
+      <div class="cards">
+        <a class="card" href="institucional.html">
+          <span class="icone">🏛️</span>
+          <h3>Institucional</h3>
+          <p>Conheça nossa missão, visão, valores e história.</p>
+          <span class="card-arrow">Ver institucional →</span>
+        </a>
+        <a class="card" href="servicos.html">
+          <span class="icone">🛠️</span>
+          <h3>Serviços</h3>
+          <p>Veja todos os serviços oferecidos pelo CTE.</p>
+          <span class="card-arrow">Ver serviços →</span>
+        </a>
+        <a class="card" href="cursos.html">
+          <span class="icone">🎓</span>
+          <h3>Cursos</h3>
+          <p>Cursos técnicos e superiores nas áreas de tecnologia.</p>
+          <span class="card-arrow">Ver cursos →</span>
+        </a>
+        <a class="card" href="projetos.html">
+          <span class="icone">💡</span>
+          <h3>Projetos</h3>
+          <p>Inovação e pesquisa tecnológica.</p>
+          <span class="card-arrow">Ver projetos →</span>
+        </a>
+        <a class="card" href="agenda.html">
+          <span class="icone">📅</span>
+          <h3>Agenda</h3>
+          <p>Eventos, palestras e atividades do CTE.</p>
+          <span class="card-arrow">Ver agenda →</span>
+        </a>
+        <a class="card" href="docentes.html">
+          <span class="icone">👨‍🏫</span>
+          <h3>Docentes</h3>
+          <p>Conheça nossa equipe de professores qualificados.</p>
+          <span class="card-arrow">Ver docentes →</span>
+        </a>
+        <a class="card" href="inclusao.html">
+          <span class="icone">🌐</span>
+          <h3>Inclusão Digital</h3>
+          <p>Programas de inclusão digital e acesso à tecnologia.</p>
+          <span class="card-arrow">Ver inclusão digital →</span>
+        </a>
+        <a class="card" href="seguranca.html">
+          <span class="icone">🔒</span>
+          <h3>Segurança</h3>
+          <p>Medidas de segurança e prevenção.</p>
+          <span class="card-arrow">Ver segurança →</span>
+        </a>
+        <a class="card" href="contato.html">
+          <span class="icone">📞</span>
+          <h3>Contato</h3>
+          <p>Fale conosco para mais informações.</p>
+          <span class="card-arrow">Ver contato →</span>
+        </a>
+      </div>
     </section>
-
-
-
-
-
-
-
   </main>
-
   <footer class="site-footer site-footer--compact" role="contentinfo">
     <div class="container footer-compact-inner">
       <div class="footer-compact-top">
@@ -112,53 +139,33 @@
           <div class="footer-logo" aria-hidden="true">Eduvale</div>
           <p class="footer-tagline">Centro Tecnológico • Faculdade Eduvale Avaré</p>
         </div>
-
         <div class="footer-compact-actions" aria-label="Ações rápidas">
-          <a class="footer-cta" href="mailto:comercial@eduvaleavare.com.br">
-            ✉️ <span>E-mail</span>
-          </a>
-          <div class="footer-item">
-            <span class="footer-icon" aria-hidden="true">✉️</span>
-            <p class="footer-text">comercial@eduvaleavare.com.br</p>
-          </div>
-          <a class="footer-cta" href="#" onclick="return false;" aria-label="Abrir WhatsApp">
-            💬 <span>WhatsApp</span>
-          </a>
-          <a class="footer-cta" href="https://www.eduvaleavare.com.br" target="_blank" rel="noopener">
-            🌐 <span>Site</span>
-          </a>
+          <a class="footer-cta" href="mailto:comercial@eduvaleavare.com.br">✉️ <span>E-mail</span></a>
+          <a class="footer-cta" href="#" onclick="return false;" aria-label="Abrir WhatsApp">💬 <span>WhatsApp</span></a>
+          <a class="footer-cta" href="https://www.eduvaleavare.com.br" target="_blank" rel="noopener">🌐 <span>Site</span></a>
         </div>
       </div>
-
       <div class="footer-compact-grid">
         <div class="footer-compact-card">
           <h3 class="footer-title">Contato</h3>
-          <p class="footer-text">
-            Av. Pref. Misael Euphrásio Leal, 347<br>
-            Jardim América – Avaré/SP – CEP: 18705-050
-          </p>
-          <p class="footer-text" style="margin-top:.6rem;">
-            (14) 3733.8585 • (14) 3733.8383
-          </p>
+          <p class="footer-text">Av. Pref. Misael Euphrásio Leal, 347<br>Jardim América – Avaré/SP – CEP: 18705-050</p>
+          <p class="footer-text" style="margin-top:.6rem;">(14) 3733.8585 • (14) 3733.8383</p>
           <p class="footer-text" style="margin-top:.4rem;">WhatsApp: (14) 9.9623.8383</p>
-          <a class="footer-link" href="#" onclick="return false;" aria-label="Link do mapa">Link do mapa: clique aqui</a>
+          <a class="footer-link" href="#" onclick="return false;">Link do mapa: clique aqui</a>
         </div>
-
         <div class="footer-compact-card">
           <h3 class="footer-title">Rádio Escola</h3>
           <a class="footer-mini-btn" href="https://www.eduvalefm.com.br/radio/" target="_blank" rel="noopener">OUÇA A RÁDIO ESCOLA</a>
         </div>
-
         <div class="footer-compact-card">
           <h3 class="footer-title">Posts recentes</h3>
-          <ul class="footer-posts footer-posts--compact" aria-label="Posts recentes">
+          <ul class="footer-posts footer-posts--compact">
             <li><a href="#" onclick="return false;">Zootecnia UNEDUVALE realiza visita técnica à Fazenda Lageado</a></li>
             <li><a href="#" onclick="return false;">Homeopatia aplicada a animais de produção é tema de palestra</a></li>
             <li><a href="#" onclick="return false;">Futuros biólogos participam de rodada de negócios</a></li>
           </ul>
         </div>
       </div>
-
       <div class="footer-bottom footer-bottom--compact">
         <p class="footer-copy">© 2026 • Projeto de ADS</p>
         <p class="footer-legal">Centro Tecnológico Eduvale • Faculdade Eduvale Avaré</p>
